@@ -8,6 +8,6 @@ WORKDIR /app
 
 RUN go build go-deployment.go
 
-EXPOSE 8086
+EXPOSE 80
 
 ENTRYPOINT  ["go run", "go-deployment.go"]
