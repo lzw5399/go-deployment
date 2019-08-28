@@ -20,6 +20,6 @@ RUN ls
 
 # final stage
 FROM scratch
-COPY --from=builder /app /app/
+COPY --from=builder . /app/
 EXPOSE 8080
-ENTRYPOINT ["/app/app"]
+ENTRYPOINT ["/app"]
