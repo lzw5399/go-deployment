@@ -14,6 +14,8 @@ RUN export GO111MODULE=on
 
 RUN export GOPROXY=https://goproxy.io
 
+RUN export GOPATH=~/go
+
 RUN go mod download
 
 RUN go install
