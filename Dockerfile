@@ -1,27 +1,20 @@
-FROM golang:latest
+FROM golang:1.12.9-alpine3.10 as build-env
+# All these steps will be cached
+RUN mkdir /hello
+WORKDIR /hello
+# COPY go.mod and go.sum files to the workspace
+COPY go.mod .
+COPY go.sum .
 
-RUN mkdir /go/src/gigem
-
-COPY . /go/src/gigem
-
-WORKDIR /go/src/gigem
-
-RUN echo $PATH
-
-RUN which go
-
-RUN export GO111MODULE=on
-
-RUN export GOPROXY=https://goproxy.io
-
-RUN export GOPATH=~/go
-
+# Get dependancies - will also be cached if we won't change mod/sum
 RUN go mod download
+# COPY the source code as the last step
+COPY . .
 
-RUN go install
+# Build the binary
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /go/bin/hello
 
-RUN go build go-deployment.go
-
-EXPOSE 80
-
-CMD ["gigem"]
+# Second step to build minimal image
+FROM scratch
+COPY --from=build-env /go/bin/hello /go/bin/hello
+ENTRYPOINT ["/go/bin/hello"]
