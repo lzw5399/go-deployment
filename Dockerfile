@@ -1,13 +1,17 @@
 FROM golang:latest
 
-RUN mkdir /app
+WORKDIR /go/src/gigem
 
-COPY ./ /app
+COPY . /go/src/gigem
 
-WORKDIR /app
+RUN echo $ PATH
 
-RUN go build go-deployment.go
+RUN which go
+
+RUN go build
+
+RUN go install
 
 EXPOSE 80
 
-ENTRYPOINT  ["go run", "go-deployment.go"]
+CMD ["gigem"]
