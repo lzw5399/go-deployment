@@ -1,8 +1,10 @@
 FROM golang:latest
 
-WORKDIR /go/src/gigem
+RUN mkdir /go/src/gigem
 
 COPY . /go/src/gigem
+
+WORKDIR /go/src/gigem
 
 RUN echo $PATH
 
