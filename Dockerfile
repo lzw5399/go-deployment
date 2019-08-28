@@ -1,25 +1,12 @@
-# build stage
-FROM golang as builder
+ROM golang
 
 ENV GO111MODULE=on
 
 WORKDIR /app
 
-COPY go.mod .
-COPY go.sum .
-
-RUN go mod download
-
 COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 
-RUN pwd
-
-RUN ls
-
-# final stage
-FROM scratch
-COPY --from=builder . /app/
 EXPOSE 8080
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/app/go-deployment"]
