@@ -8,7 +8,7 @@ RUN echo $PATH
 
 RUN which go
 
-RUN go build
+RUN go build go-deployment.go
 
 RUN go install
 
