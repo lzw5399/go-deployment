@@ -1,8 +1,10 @@
 FROM golang:latest
 
-# WORKDIR ./
+RUN mkdir /app
 
-# ADD . $GOPATH/src/github.com/mygohttp
+COPY ./ /app
+
+WORKDIR /app
 
 RUN go build go-deployment.go
 
