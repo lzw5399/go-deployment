@@ -20,6 +20,6 @@ RUN ls
 
 # final stage
 FROM scratch
-COPY --from=builder /app/httpserver /app/
+COPY --from=builder /app /app/
 EXPOSE 8080
-ENTRYPOINT ["/app/httpserver"]
+ENTRYPOINT ["/app"]
