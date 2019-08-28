@@ -1,12 +1,10 @@
 FROM golang:latest
 
-MAINTAINER Razil "zhiwen@kooboo.cn"
-
-WORKDIR ./
+# WORKDIR ./
 
 # ADD . $GOPATH/src/github.com/mygohttp
 
-RUN go build .
+RUN go build go-deployment.go
 
 EXPOSE 8086
 
