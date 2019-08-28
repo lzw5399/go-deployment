@@ -12,6 +12,8 @@ RUN export GO111MODULE=on
 
 RUN export GOPROXY=https://goproxy.io
 
+RUN go mod download
+
 RUN go install
 
 RUN go build go-deployment.go
