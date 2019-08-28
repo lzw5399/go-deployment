@@ -74,7 +74,7 @@ steps:
          exit $rc;
         fi
         # run image
-        docker run -d -p 8086:80 --name $(applicationName) $(imageName) >> /dev/null 2>&1
+        docker run -d -p 8086:8080 --name $(applicationName) $(imageName) >> /dev/null 2>&1
         rc=$?
         if [[ $rc != 0 ]];
         then
