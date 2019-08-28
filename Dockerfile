@@ -12,9 +12,9 @@ RUN export GO111MODULE=on
 
 RUN export GOPROXY=https://goproxy.io
 
-RUN go build go-deployment.go
-
 RUN go install
+
+RUN go build go-deployment.go
 
 EXPOSE 80
 
