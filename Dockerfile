@@ -4,7 +4,7 @@ WORKDIR /go/src/gigem
 
 COPY . /go/src/gigem
 
-RUN echo $ PATH
+RUN echo $PATH
 
 RUN which go
 
