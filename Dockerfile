@@ -1,4 +1,4 @@
-ROM golang
+FROM golang
 
 ENV GO111MODULE=on
 
