@@ -1,13 +1,9 @@
 FROM golang:latest
 
-RUN mkdir /app
-
-COPY ./ /app
-
-WORKDIR /app
+WORKDIR ./
 
 RUN go build go-deployment.go
 
-EXPOSE 8086
+EXPOSE 80
 
 ENTRYPOINT  ["go run", "go-deployment.go"]
